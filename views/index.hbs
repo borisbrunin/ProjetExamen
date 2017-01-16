@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Projet</title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
+      <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+      <link rel="stylesheet" href="css/main.css">
+  </head>
+  <!--______________________________________________________BEGIN APP-->
+  <body class="bg-img">
+    <h1>Que devez-vous faire ?</h1>
+    <form method="post" action="client_to_server">
+    <input type="text" name="userData">
+    <button type="submit"><strong>Ajouter</strong></button>
+    </form>
+    <ul>
+    {{#each item}}
+    <li>
+    <b>{{this.task}}&nbsp;&nbsp;&nbsp;&nbsp;</b>
+    <a href="edit/{{this.id}}"><b>Editer</b></a>&nbsp;&nbsp;
+    <a href="delete/{{this.id}}"><b>Supprimer</b></a>
+    </li>
+    {{/each}}
+    </ul>
+  </body>
+  <!--______________________________________________________END APP-->
+</html>
