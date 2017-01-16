@@ -3,13 +3,13 @@
 }
 
 body {
-  font-family: "Overpass";
-  color: #00356b;
+  font-family: "Arial";
+  color: #FFFFFF;
   letter-spacing: 0.5px;
   margin: 0 auto;
   max-width: 1024px;
   text-align: center;
-  background: #cbc6c2;
+  background: #8B0000;
 
 }
 
@@ -34,10 +34,10 @@ button {
   height: 40px;
   padding-left: 10px;
   padding-right: 10px;
-  background: #63aaff;
-  color: #ffffff;
+  background: #2F4F4F;
+  color: #000000;
   font-size: 24px;
 }
 a {
-    color: #286dc0;
+    color: #000000;
 }
