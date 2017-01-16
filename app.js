@@ -1,10 +1,14 @@
 //On importe les dependances avec NodeJS via la fonction require()
 // Permets de charger le module express dans une variable
 var express = require("express");
+
 // Création de l'application
 var app = express();
+
 // Permets de charger le module express-handlebars dans une variable
+
 var expressHbs = require('express-handlebars');
+
 // Permets de charger le module body-parser dans une variable
 var bodyParser = require('body-parser');
 
@@ -26,6 +30,7 @@ var mongoose = require('mongoose');
 // code de connection a la base de donnée
 mongoose.connect('mongodb://localhost/app');
 // Création d'un template tâche
+// Défini la structure de la tache qu'on stocke
 var Todo = mongoose.model('Todo', {
  task: {
  type: String,
@@ -42,8 +47,9 @@ app.use(express.static('public'));
 // var counter = 0;
 
 // définit la route basique, vers l'index et la fonction de callback
+//app.get route vers page d'index puis on
 app.get("/", function(req, res) {
-  //Vérifie si il y existe déja une liste de tâches
+//Vérifie si il y existe déja une liste de tâches
  Todo.find(function(err, arrayOfItems) {
  res.render("index", {
  item: arrayOfItems
@@ -52,10 +58,10 @@ app.get("/", function(req, res) {
 });
 
 // app.post(): Achemine les requetes HTTP POST vers /client_to_server via la fonction de callback spécifiée
-app.post("/client_to_server", function(req, res) {
+app.post("/client_to_server", function(req, res) { //c'est la méthode qui va etre appellée (quand je clique sur AJOUTER)
   // crée un objet "Todo" dans lequel il insère les données du formulaire récupérée via le body-parser
  Todo.create({
- task: req.body.userData
+ task: req.body.userData //permet de récupérer les données du formulaire grace à bodyParser au dessus & userdata c'est la tache que j'enregistre (le label) voir index
  });
  // Redirige vers l'index
  res.redirect("/");
@@ -78,7 +84,7 @@ app.get('/delete/:id', function(req, res) {
 // Permets d'éditer une tâche, renvoie vers la page d'édition et appelle la fonction de callback
 app.get("/edit/:id", function(req, res) {
   // Cherche la tâche correspondante dans la base de donnéevia son id passé en paramètre
- Todo.findById(req.params.id, function(err, task) {
+ Todo.findById(req.params.id, function(err, task) { //permet de récupérer les données du formulaire grace a bodyParser
    // renvoie la page HTML "edit" pour pouvoir aller dessus
  res.render("edit", {
  todo: task
@@ -97,12 +103,7 @@ Todo.findById(req.params.id, function(err, todo) {
  res.redirect('/');
 });
 
-// Redirige vers la page d'exemple statique
-app.get('/static', function(req, res) {
-    res.sendFile('static_example.html', {
-        root: "public"
-    });
-});
+
 //Rédirige vers l'index
 app.get("*", function(req, res) {
     res.redirect("/")

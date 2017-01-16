@@ -9,7 +9,7 @@
     "express-handlebars": "^3.0.0",
     "mongoose": "^4.7.6"
   },
-  "devDependencies": {}, //
+  "devDependencies": {}, 
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
